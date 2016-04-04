@@ -1,0 +1,60 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <p>
+        推广码
+      </p>
+
+      <pre>{{$ctrl.domain}}/html/form?code={{$ctrl.user._id}}</pre>
+    </div>
+    <div class="col-lg-12">
+
+      <div class="panel panel-default">
+        <div class="panel-heading"><i class="glyphicon glyphicon-list"></i> 订单数据</div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+                <th>
+                  推广人
+                </th>
+                <th>
+                  姓名
+                </th>
+                <th>
+                  手机号
+                </th>
+                <th>
+                  - 省 - 区 - 县 -
+                </th>
+                <th>
+                  详细地址
+                </th>
+                <th>
+                  提交时间
+                </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="thing in $ctrl.awesomeThings">
+            <td ng-init="itemUser = $ctrl.getUserName(thing.scode)">
+              {{ itemUser.name }}
+            </td>
+            <td>{{thing.name}}</td>
+            <td>{{thing.phone}}</td>
+            <td>{{thing.province}}-{{thing.city}}-{{thing.district}}</td>
+            <td>{{thing.street}}</td>
+            <td>{{thing.create_at | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <nav>
+        <ul class="pagination pagination-sm">
+        </ul>
+      </nav>
+
+    </div>
+  </div>
+</div>

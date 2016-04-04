@@ -110,7 +110,7 @@ border-color: transparent;
 
 </style>
 
-<form class="center with-shadow" data-form-token="0R2dF2" accept-charset="UTF-8" method="post" action="http://share.dz77.top/Order/sendit.asp?dorsy=submit">
+<form class="center with-shadow" data-form-token="0R2dF2" accept-charset="UTF-8" method="post" action="/api/order/send?dorsy=submit&code=<%= code %>">
 
 	<div class="banner font-family-inherit">
           <div class="banner-text"> </div>
@@ -190,6 +190,7 @@ border-color: transparent;
     </div>
   </div>
   <input type="text" name="entry[field_3][street]" id="entry_field_3_street" placeholder="详细地址" class="street-input fixed-width-control gd-input-xxlarge">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 </div>
 </div>
 </div>
@@ -236,7 +237,6 @@ border-color: transparent;
 
       <div class="field submit-field col-md-12 clearfix">
               <input type="submit" name="commit" value="提交订单" class="submit gd-btn gd-btn-reversed font-family-inherit with-shadow">
-            <a target="_blank" class="report-form-link gd-form-control-line-height" href="https://jinshuju.net/f/K7GcOZ?x_field_1=0R2dF2">举报</a>
       </div>
 
     </div>

@@ -12,7 +12,11 @@ router.get('/index', function(req, res, next){
 
 router.get('/form', function(req, res, next){
 
-  res.render('content');
+
+  res.render('content',{
+    code : req.query.code,
+    csrfToken: req.csrfToken()
+  });
 });
 
 module.exports = router;
