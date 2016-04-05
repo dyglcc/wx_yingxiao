@@ -11,6 +11,8 @@
 
 import _ from 'lodash';
 import Thing from './thing.model';
+var nodeExcel = require('excel-export');
+var path = require('path');
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -79,14 +81,15 @@ export function findByCode(req, res){
   var uid = req.params.id;
   Thing.count({scode:uid},function(err,count){
     if(err) return handleError(res);
-    var num = parseInt(count / 20);
-    var total = count % 20 == 0 ? num : num + 1;
-    var index = 20 * (curPage - 1);
+    var num = parseInt(count / 10);
+    var total = count % 10 == 0 ? num : num + 1;
+    var index = 10 * (curPage - 1);
     if(index < 0)
       index = 0;
-      Thing.find({scode: uid},null,{ sort:{ _id:-1 }, skip:0, limit:20 },function(err,data){
+      console.log('index',index);
+      Thing.find({scode: uid},null,{ sort:{ _id:-1 }, skip:index, limit:10 },function(err,data){
         if(err) return handleError(res);
-        return res.json({total:total, orders: data});
+        return res.json({count:count,total:total, orders: data});
       });
   });
 
@@ -127,8 +130,34 @@ export function update(req, res) {
 
 // Deletes a Thing from the DB
 export function destroy(req, res) {
-  return Thing.findById(req.params.id).exec()
-    .then(handleEntityNotFound(res))
-    .then(removeEntity(res))
-    .catch(handleError(res));
+  return Thing.remove({scode:req.params.id},function(){
+    res.json({status:'ok'});
+  });
 }
+
+
+export function excel(req, res){
+    var conf ={};
+    conf.stylesXmlFile = path.normalize(__dirname + '/../../..') + '/server/data/styles.xml';
+    conf.name = "mysheet";
+    conf.cols = [{
+        caption:'姓名',
+        type:'string'
+    },{
+      caption:''
+    },{
+        caption:'date',
+        type:'date'
+    }];
+
+    conf.rows = [
+        ['pi', new Date()],
+        ["e", new Date()],
+        ["M&M<>'", new Date()],
+        ["null date",new Date()]
+    ];
+    var result = nodeExcel.execute(conf);
+    res.setHeader('Content-Type', 'application/vnd.openxmlformats');
+    res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
+    res.end(result, 'binary');
+};

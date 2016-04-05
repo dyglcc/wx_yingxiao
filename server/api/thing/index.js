@@ -8,6 +8,7 @@ var router = express.Router();
 router.get('/', controller.index);
 router.get('/:id', controller.show);
 router.get('/u/:id', controller.findByCode);
+router.get('/e/:id', controller.excel)
 router.post('/', controller.create);
 router.post('/send', controller.create);
 router.put('/:id', controller.update);

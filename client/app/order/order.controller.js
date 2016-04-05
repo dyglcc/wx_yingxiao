@@ -2,12 +2,14 @@
 (function(){
 
 class OrderComponent {
-    constructor($http,$location,Auth,User) {
+
+    constructor($http,$location,Auth,User,$state) {
       var self = this;
       this.$http = $http;
       this.$location = $location;
       this.Auth = Auth;
       this.User = User;
+      this.$state = $state;
       this.awesomeThings = [];
       this.user = {};
       this.curPage = 0;
@@ -30,6 +32,7 @@ class OrderComponent {
           self.user = response;
           self.$http.get('/api/order/u/' + self.user._id ,{ params:{page: self.curPage }}).then(response => {
             self.awesomeThings = response.data.orders;
+            self.count = response.data.count;
           });
       });
 
@@ -45,6 +48,25 @@ class OrderComponent {
           return item;
       }
     }
+
+    clearAll(){
+      var self = this;
+      var user = this.user;
+      var scode = user._id;
+      var url = '/api/order/' + scode;
+      this.$http.delete(url).then(function(){
+          self.$state.reload();
+      });
+    }
+
+    change(){
+      this.$http.get('/api/order/u/' + this.user._id ,{ params:{page: this.curPage }}).then(response => {
+        console.log('response.data.orders',response.data.orders);
+        this.awesomeThings = response.data.orders;
+        this.count = response.data.count;
+      });
+    }
+
 }
 
 angular.module('weixinOApp')

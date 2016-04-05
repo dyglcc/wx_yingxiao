@@ -1,0 +1,30 @@
+<div class="container">
+    <p>
+      修改模板
+    </p>
+
+    <uib-tabset>
+    <uib-tab active="tab.active">
+      <uib-tab-heading>
+        <i class="glyphicon glyphicon-bell"></i> 首页末班修改
+      </uib-tab-heading>
+      <div text-angular ng-model="$ctrl.indexHtml"></div>
+
+
+      <br>
+        <button type="button" class="btn btn-default navbar-btn" ng-click="$ctrl.saveIndexTmpl()">保存模板</button>
+        <button type="button" class="btn btn-default navbar-btn" ng-click="$ctrl.resetIndexTmpl()">还原模板</button>
+    </uib-tab>
+    <uib-tab>
+      <uib-tab-heading>
+        <i class="glyphicon glyphicon-bell"></i> 领奖页面修改
+      </uib-tab-heading>
+      <div text-angular ng-model="$ctrl.contentHtml" id="aa"></div>
+      <br>
+        <button type="button" class="btn btn-default navbar-btn" ng-click="$ctrl.saveContentTmpl()">保存模板</button>
+        <button type="button" class="btn btn-default navbar-btn" ng-click="$ctrl.resetContentTmpl()">还原模板</button>
+    </uib-tab>
+  </uib-tabset>
+
+
+</div>

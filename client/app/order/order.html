@@ -8,10 +8,16 @@
 
       <pre>{{$ctrl.domain}}/html/index?code={{$ctrl.user._id}}</pre>
     </div>
+
+    <div class="col-lg-12">
+      <button type="button" class="btn btn-default navbar-btn" ng-click="$ctrl.clearAll()">清空数据</button>
+      <a type="button" class="btn btn-default navbar-btn" href="/api/order/e/{{$ctrl.user._id}}" target="_blank">导出数据</a>
+    </div>
+
     <div class="col-lg-12">
 
       <div class="panel panel-default">
-        <div class="panel-heading"><i class="glyphicon glyphicon-list"></i> 订单数据</div>
+        <div class="panel-heading"><i class="glyphicon glyphicon-list"></i> 订单数据 (总条数:{{$ctrl.count}})</div>
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -49,11 +55,10 @@
           </tbody>
         </table>
       </div>
+      <div class="text-center">
+          <uib-pagination ng-change="$ctrl.change()" previous-text="上一页" next-text="下一页" items-per-page="10" total-items="$ctrl.count" ng-model="$ctrl.curPage" max-size="5" class="pagination-sm"  force-ellipses="true"></uib-pagination>
+      </div>
 
-      <nav>
-        <ul class="pagination pagination-sm">
-        </ul>
-      </nav>
 
     </div>
   </div>

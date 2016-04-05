@@ -9,7 +9,8 @@ angular.module('weixinOApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'validation.match'
+  'validation.match',
+  'textAngular'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider
