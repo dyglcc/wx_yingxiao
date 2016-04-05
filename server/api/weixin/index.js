@@ -149,9 +149,10 @@ module.exports = function(app){
 			// 此处可能需要清理缓存当中已过期的数据
 		}
 
-
+		var appid = 'wxf1d4480d9749482b';
+		var appsecret = '731a8e7f0659bc6cec8aecfe0ea740d6';
 		// 获取微信签名所需的access_token
-		https.get('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='+ appIds[index].appid +'&secret=' + appIds[index].secret, function(_res) {
+		https.get('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='+ appid +'&secret=' + appsecret, function(_res) {
 			var str = '';
 			_res.on('data', function(data){
 				str += data;
