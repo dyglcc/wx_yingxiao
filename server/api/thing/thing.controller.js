@@ -144,20 +144,33 @@ export function excel(req, res){
         caption:'姓名',
         type:'string'
     },{
-      caption:''
+      caption:'手机号',
+      type:'string'
     },{
-        caption:'date',
-        type:'date'
+      caption:'省',
+      type:'string'
+    },{
+      caption:'区',
+      type:'string'
+    },{
+      caption:'县',
+      type:'string'
+    },{
+      caption:'详细地址',
+      type:'string'
+    },{
+      caption:'提交时间',
+      type:'string'
     }];
-
-    conf.rows = [
-        ['pi', new Date()],
-        ["e", new Date()],
-        ["M&M<>'", new Date()],
-        ["null date",new Date()]
-    ];
-    var result = nodeExcel.execute(conf);
-    res.setHeader('Content-Type', 'application/vnd.openxmlformats');
-    res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
-    res.end(result, 'binary');
+    conf.rows = [];
+    Thing.find({scode: req.params.id},null,{ sort:{ _id:-1 } },function(err,data){
+      for (var i = 0; i < data.length; i++) {
+        var item = data[i];
+        conf.rows.push([item.name,item.phone,item.province,item.city,item.district,item.street,item.create_at]);
+      }
+        var result = nodeExcel.execute(conf);
+        res.setHeader('Content-Type', 'application/vnd.openxmlformats');
+        res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
+        return res.end(result, 'binary');
+    });
 };
