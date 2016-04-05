@@ -226,15 +226,15 @@
 		wx.onMenuShareAppMessage({
 		  title: '【免费领取】S925满天星纯银手镯限量1000个，我已经抢到了！！！',
 		  desc: '为了提高网络平台知名度，为全面进入互联网＋做准备，而推出的微信接力免费领取活动！',
-		  link: 'http://192.168.199.66/html/index',  //分享后别人看到的链接
+		  link: 'http://i-fushi.cn/html/index',  //分享后别人看到的链接
 		  imgUrl: 'http://a.dz66.top/img/logo.jpg',
 		  trigger: function (res) {
 			// 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
-			alert('用户点击发送给朋友');
+			<!-- alert('用户点击发送给朋友'); -->
 		  },
       success: function (res) {
-  			 alert('已分享');
-  			window.location.href="/html/order?code=<%= code %>";
+  			 <!-- alert('已分享'); -->
+  			window.location.href="/html/form?code=<%= code %>";
   		},
 		  cancel: function (res) {
 			// alert('已取消');
@@ -247,27 +247,27 @@
 		wx.onMenuShareTimeline({
 		  title: '【免费领取】S925满天星纯银手镯限量1000个，我已经抢到了！！！',
 		  desc: '为了提高网络平台知名度，为全面进入互联网＋做准备，而推出的微信接力免费领取活动！',
-		  link: 'http://192.168.199.66/html/index',
+		  link: 'http://i-fushi.cn/html/index',
 		  imgUrl: 'http://a.dz66.top/img/logo.jpg',
 		  trigger: function (res) {
 			// 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
-			   alert('用户点击分享到朋友圈');
+			   <!-- alert('用户点击分享到朋友圈'); -->
 		  },
 		  success: function (res) {
 			 alert('已分享');
-			window.location.href="/html/order?code=<%= code %>";
+			window.location.href="/html/form?code=<%= code %>";
 		  },
 		  cancel: function (res) {
-			     alert('已取消');
+			     <!-- alert('已取消'); -->
 		  },
 		  fail: function (res) {
-			     alert(JSON.stringify(res));
+			     <!-- alert(JSON.stringify(res)); -->
 		  }
 		});
 	});
 
 	wx.error(function (res) {
-		alert(res.errMsg);
+		<!-- alert(res.errMsg); -->
 	});
  </script>
 

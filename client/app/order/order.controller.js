@@ -36,7 +36,7 @@ class OrderComponent {
           });
       });
 
-      this.domain = this.$location.protocol() + '://' + this.$location.host()  + ':' + this.$location.port();
+      this.domain = this.$location.protocol() + '://' + this.$location.host();
 
 
     }
