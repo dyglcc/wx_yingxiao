@@ -402,6 +402,16 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.client %>',
         dest: '.tmp/',
         src: ['{app,components}/**/*.css']
+      },
+      ss:{
+          files: [{
+            expand: true,
+            dot: true,
+            cwd: '<%= yeoman.client %>',
+            dest: '<%= yeoman.dist %>/<%= yeoman.client %>',
+            src: [
+              'assets/**/*'
+            ]}]
       }
     },
 
@@ -814,11 +824,12 @@ module.exports = function (grunt) {
     'ngAnnotate',
     'copy:dist',
     'babel:server',
-    'cdnify',
+    // 'cdnify',
     'cssmin',
     'uglify',
     'filerev',
-    'usemin'
+    'usemin',
+    'copy:ss'
   ]);
 
   grunt.registerTask('default', [
