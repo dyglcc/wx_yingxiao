@@ -212,7 +212,7 @@
 		wx.onMenuShareAppMessage({
 		  title: '【免费领取】S925满天星纯银手镯限量1000个，我已经抢到了！！！',
 		  desc: '为了提高网络平台知名度，为全面进入互联网＋做准备，而推出的微信接力免费领取活动！',
-		  link: 'http://i-fushi.cn/html/index?code=<%= code %>',  //分享后别人看到的链接
+		  link: window.location.href,  //分享后别人看到的链接
 		  imgUrl: 'http://7oxj9h.com1.z0.glb.clouddn.com/logo.jpg',
 		  trigger: function (res) {
 			// 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
@@ -233,7 +233,7 @@
 		wx.onMenuShareTimeline({
 		  title: '【免费领取】S925满天星纯银手镯限量1000个，我已经抢到了！！！',
 		  desc: '为了提高网络平台知名度，为全面进入互联网＋做准备，而推出的微信接力免费领取活动！',
-		  link: 'http://i-fushi.cn/html/index?code=<%= code %>',
+		  link: window.location.href,
 		  imgUrl: 'http://7oxj9h.com1.z0.glb.clouddn.com/logo.jpg',
 		  trigger: function (res) {
 			// 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回

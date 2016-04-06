@@ -15,8 +15,8 @@ router.get('/index', function(req, res, next){
   var filtpath = path.normalize(__dirname + '/../../..') + '/server/config/tmpl/index.tmpl';
   var data = fs.readFileSync(filtpath, 'utf-8');
 
-    var appid = 'wxf1d4480d9749482b';
-    var appsecret = '731a8e7f0659bc6cec8aecfe0ea740d6';
+    var appid = 'wxb92b5a3bc3812a01';
+    var appsecret = '4c3d9b88212581bc014cd57eba0eb493';
     var fullurl = req.protocol + '://' + req.get('host') + req.originalUrl;
     getToken(appid,appsecret,function(resp){
       getTicket(fullurl, appid, res, resp,function(tokens){
