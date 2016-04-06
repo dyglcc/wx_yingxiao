@@ -20,6 +20,7 @@ router.get('/index', function(req, res, next){
     var fullurl = req.protocol + '://' + req.get('host') + req.originalUrl;
     getToken(appid,appsecret,function(resp){
       getTicket(fullurl, appid, res, resp,function(tokens){
+        tokens.appid = appid;
           res.render('view',{
             code: req.query.code,
             tmpl: data,
