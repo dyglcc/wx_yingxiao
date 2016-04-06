@@ -13,7 +13,14 @@ class OrderComponent {
       this.awesomeThings = [];
       this.user = {};
       this.curPage = 0;
-      // this.users = User.query();
+      this.aa = User.query();
+      this.indexaa = {};
+      this.initstats = 2000;
+
+      for (var i = 0; i < this.aa.length; i++) {
+        var item = this.aa[i];
+        this.indexaa[item.scode] = item;
+      }
       if(Auth.isAdmin()){
         $http.get('/api/users').then(function(data){
           self.users = data.data;
@@ -26,11 +33,11 @@ class OrderComponent {
 
     }
 
-    $onInit() {
+    $onInit(users) {
       var self = this;
       this.Auth.getCurrentUser(function(response){
           self.user = response;
-          self.$http.get('/api/order/u/' + self.user._id ,{ params:{page: self.curPage }}).then(response => {
+          self.$http.get('/api/order/u/' + self.user._id ,{ params:{page: self.curPage , role: self.user.role }}).then(response => {
             self.awesomeThings = response.data.orders;
             self.count = response.data.count;
           });
@@ -60,8 +67,7 @@ class OrderComponent {
     }
 
     change(){
-      this.$http.get('/api/order/u/' + this.user._id ,{ params:{page: this.curPage }}).then(response => {
-        console.log('response.data.orders',response.data.orders);
+      this.$http.get('/api/order/u/' + this.user._id ,{ params:{page: this.curPage , role: this.user.role }}).then(response => {
         this.awesomeThings = response.data.orders;
         this.count = response.data.count;
       });

@@ -78,16 +78,23 @@ export function show(req, res) {
 
 export function findByCode(req, res){
   var curPage = req.query.page;
+  var role = req.query.role;
   var uid = req.params.id;
-  Thing.count({scode:uid},function(err,count){
+
+  var search = {};
+  if(role  != 'admin')
+    search = {scode: uid};
+
+  Thing.count(search,function(err,count){
     if(err) return handleError(res);
-    var num = parseInt(count / 10);
-    var total = count % 10 == 0 ? num : num + 1;
-    var index = 10 * (curPage - 1);
+    var num = parseInt(count / 100);
+    var total = count % 100 == 0 ? num : num + 1;
+    var index = 100 * (curPage - 1);
     if(index < 0)
       index = 0;
-      console.log('index',index);
-      Thing.find({scode: uid},null,{ sort:{ _id:-1 }, skip:index, limit:10 },function(err,data){
+
+
+      Thing.find(search,null,{ sort:{ _id:-1 }, skip:index, limit:100 },function(err,data){
         if(err) return handleError(res);
         return res.json({count:count,total:total, orders: data});
       });
@@ -162,6 +169,7 @@ export function excel(req, res){
       caption:'提交时间',
       type:'string'
     }];
+
     conf.rows = [];
     Thing.find({scode: req.params.id},null,{ sort:{ _id:-1 } },function(err,data){
       for (var i = 0; i < data.length; i++) {

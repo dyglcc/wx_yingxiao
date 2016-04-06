@@ -12,7 +12,7 @@ var querystring = require('querystring');
 var router = express.Router();
 
 router.get('/index', function(req, res, next){
-  var filtpath = path.normalize(__dirname + '/../../..') + '/server/config/tmpl/index.tmpl'
+  var filtpath = path.normalize(__dirname + '/../../..') + '/server/config/tmpl/index.tmpl';
   var data = fs.readFileSync(filtpath, 'utf-8');
 
     var appid = 'wxf1d4480d9749482b';
@@ -26,7 +26,7 @@ router.get('/index', function(req, res, next){
             tokens: tokens
           });
       });
-    })
+    });
 
 });
 
@@ -109,7 +109,14 @@ router.post('/tmpl/reset_content',function(req, res){
   });
 });
 
+var curToken = {};
+
 var getToken = function(appid,appsecret,callback){
+  var curTime = parseInt(new Date().getTime()/1000);
+  if(curToken.time && curTime - curToken.time < 7000){
+    console.log('toekn cache:',curTime,curTime - curToken.time < 7000);
+    return callback(curToken.resp);
+  }
   https.get('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='+ appid +'&secret=' + appsecret, function(_res) {
     var str = '';
     _res.on('data', function(data){
@@ -122,7 +129,8 @@ var getToken = function(appid,appsecret,callback){
       }catch(e){
             return errorRender(res, '解析access_token返回的JSON数据错误', str);
       }
-
+      curToken.time = parseInt(new Date().getTime()/1000);
+      curToken.resp = resp;
       return callback(resp);
     });
   })
