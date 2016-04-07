@@ -144,6 +144,10 @@ export function destroy(req, res) {
 
 
 export function excel(req, res){
+    var serach = {scode: req.params.id};
+    var role = req.query.role;
+    if(role == 'admin')
+        search = {};
     var conf ={};
     conf.stylesXmlFile = path.normalize(__dirname + '/../../..') + '/server/data/styles.xml';
     conf.name = "mysheet";
@@ -171,7 +175,7 @@ export function excel(req, res){
     }];
 
     conf.rows = [];
-    Thing.find({scode: req.params.id},null,{ sort:{ _id:-1 } },function(err,data){
+    Thing.find(serach,null,{ sort:{ _id:-1 } },function(err,data){
       for (var i = 0; i < data.length; i++) {
         var item = data[i];
         conf.rows.push([item.name,item.phone,item.province,item.city,item.district,item.street,item.create_at]);
