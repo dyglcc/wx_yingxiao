@@ -147,7 +147,7 @@ export function excel(req, res){
     var serach = {scode: req.params.id};
     var role = req.query.role;
     if(role == 'admin')
-        search = {};
+        serach = {};
     var conf ={};
     conf.stylesXmlFile = path.normalize(__dirname + '/../../..') + '/server/data/styles.xml';
     conf.name = "mysheet";
