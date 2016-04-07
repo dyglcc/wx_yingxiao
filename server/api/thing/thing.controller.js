@@ -11,6 +11,8 @@
 
 import _ from 'lodash';
 import Thing from './thing.model';
+import User from '../user/user.model';
+
 var nodeExcel = require('excel-export');
 var path = require('path');
 
@@ -137,7 +139,11 @@ export function update(req, res) {
 
 // Deletes a Thing from the DB
 export function destroy(req, res) {
-  return Thing.remove({scode:req.params.id},function(){
+  var search = {scode:req.params.id};
+  var role = req.query.role;
+  if(role == 'admin')
+    search = {};
+  return Thing.remove(search,function(){
     res.json({status:'ok'});
   });
 }
@@ -152,6 +158,9 @@ export function excel(req, res){
     conf.stylesXmlFile = path.normalize(__dirname + '/../../..') + '/server/data/styles.xml';
     conf.name = "mysheet";
     conf.cols = [{
+        caption:'推广人',
+        type: 'string'
+    },{
         caption:'姓名',
         type:'string'
     },{
@@ -175,14 +184,23 @@ export function excel(req, res){
     }];
 
     conf.rows = [];
-    Thing.find(serach,null,{ sort:{ _id:-1 } },function(err,data){
-      for (var i = 0; i < data.length; i++) {
-        var item = data[i];
-        conf.rows.push([item.name,item.phone,item.province,item.city,item.district,item.street,item.create_at]);
-      }
-        var result = nodeExcel.execute(conf);
-        res.setHeader('Content-Type', 'application/vnd.openxmlformats');
-        res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
-        return res.end(result, 'binary');
+    var indexUser = {};
+    User.find({},function(err,users){
+        for (var i = 0; i < users.length; i++) {
+            var itemuser = users[i];
+            indexUser[itemuser._id] = itemuser.name;
+        }
+
+        Thing.find(serach,null,{ sort:{ _id:-1 } },function(err,data){
+          for (var i = 0; i < data.length; i++) {
+            var item = data[i];
+            conf.rows.push([indexUser[item.scode],item.name,item.phone,item.province,item.city,item.district,item.street,item.create_at]);
+          }
+            var result = nodeExcel.execute(conf);
+            res.setHeader('Content-Type', 'application/vnd.openxmlformats');
+            res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
+            return res.end(result, 'binary');
+        });
     });
+
 };

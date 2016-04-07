@@ -60,7 +60,7 @@ class OrderComponent {
       var self = this;
       var user = this.user;
       var scode = user._id;
-      var url = '/api/order/' + scode;
+      var url = '/api/order/' + scode + '?role=' + user.role;
       this.$http.delete(url).then(function(){
           self.$state.reload();
       });
