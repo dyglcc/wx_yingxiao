@@ -1,5 +1,16 @@
 'use strict';
 
+// no use code 
+class Project {  
+  constructor(name) {
+    this.name = name;
+  }
+
+  start() {
+    return "Project " + this.name + " starting";
+  }
+}
+//--no use code
 (function() {
 
 class AdminController {

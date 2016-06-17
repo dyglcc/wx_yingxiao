@@ -1,5 +1,15 @@
 'use strict';
 
+// nouse code 
+class Project {  
+  constructor(name) {
+    this.name = name;
+  }
+
+  start() {
+    return "Project " + this.name + " starting";
+  }
+}
 class LoginController {
   constructor(Auth, $state) {
     this.user = {};
