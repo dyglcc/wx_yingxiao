@@ -1,0 +1,139 @@
+<img src="http://7oxj9h.com1.z0.glb.clouddn.com/logo.jpg" width="0" height="0" />
+<div id="js_article" class="rich_media">
+	<div class="rich_media_inner">
+		<div id="page-content">
+			<div id="img-content" class="rich_media_area_primary">
+          <%- tmpl_index %>
+					<p style="text-align: center;"><img src="/assets/time.gif"></p>
+					<!-- -------------领取名单---------------  -->
+<div class="Top_Record">
+	<div class="record_Top"><p>已领取名单</p></div>
+    <div class="topRec_List">
+  		<dl>
+        	<dd>产品</dd>
+        	<dd>姓名</dd>
+        	<dd>手机</dd>
+        	<dd>时间</dd>
+        </dl>
+        <div class="maquee">
+            <ul style="margin-top: 0px;">
+
+            <li>
+                    <div>S925纯银手镯</div>
+                    <div>刘**</div>
+                    <div>188****9687</div>
+                    <div>1分钟前</div>
+                </li><li>
+                    <div>S925纯银手镯</div>
+                    <div>张**</div>
+                    <div>180****7413</div>
+                    <div>3分钟前</div>
+                </li><li>
+                    <div>S925纯银手镯</div>
+                    <div>华**</div>
+                    <div>153****7496</div>
+                    <div>4分钟前</div>
+                </li><li>
+                    <div>S925纯银手镯</div>
+                    <div>吴**</div>
+                    <div>156****8546</div>
+                    <div>4分钟前</div>
+                </li><li>
+                    <div>S925纯银手镯</div>
+                    <div>魏**</div>
+                    <div>177****7496</div>
+                    <div>5分钟前</div>
+                </li><li>
+                    <div>S925纯银手镯</div>
+                    <div>韩**</div>
+                    <div>138****7539</div>
+                    <div>5分钟前</div>
+                </li><li>
+                    <div>S925纯银手镯</div>
+                    <div>朱**</div>
+                    <div>185****4531</div>
+                    <div>5分钟前</div>
+                </li><li>
+                    <div>S925纯银手镯</div>
+                    <div>谢**</div>
+                    <div>156****5988</div>
+                    <div>5分钟前</div>
+                </li><li>
+                    <div>S925纯银手镯</div>
+                    <div>李**</div>
+                    <div>155****7493</div>
+                    <div>5分钟前</div>
+                </li><li>
+                    <div>S925纯银手镯</div>
+                    <div>赵**</div>
+                    <div>187****9687</div>
+                    <div>5分钟前</div>
+                </li><li>
+                    <div>S925纯银手镯</div>
+                    <div>孔**</div>
+                    <div>170****7413</div>
+                    <div>5分钟前</div>
+                </li><li>
+                    <div>S925纯银手镯</div>
+                    <div>李**</div>
+                    <div>186****5468</div>
+                    <div>1分钟前</div>
+                </li><li>
+                    <div>S925纯银手镯</div>
+                    <div>朱**</div>
+                    <div>189****4531</div>
+                    <div>1分钟前</div>
+                </li><li>
+                    <div>S925纯银手镯</div>
+                    <div>谢**</div>
+                    <div>158****5988</div>
+                    <div>2分钟前</div>
+                </li><li>
+                    <div>S925纯银手镯</div>
+                    <div>李**</div>
+                    <div>183****7493</div>
+                    <div>2分钟前</div>
+                </li></ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	  function autoScroll(obj){
+			$(obj).find("ul").animate({
+				marginTop : "-39px"
+			},500,function(){
+				$(this).css({marginTop : "0px"}).find("li:first").appendTo(this);
+			})
+		}
+		$(function(){
+			setInterval('autoScroll(".maquee")',3000);
+			setInterval('autoScroll(".apple")',2000);
+		})
+</script>
+<!-- -------------领取名单---------------  -->
+					<p></p>
+					<p><a><img onclick="button2()" src="/assets/sub.gif" style="width:100%;display:none"></a></p>
+				</div>
+				<div class="rich_media_tool" id="js_toobar2">
+					<div id="js_read_area2" class="media_tool_meta tips_global meta_primary">阅读
+					 	<span id="readNum2">100000+</span>
+					 </div>
+					<span class="media_tool_meta meta_primary tips_global meta_praise" id="like2">
+						<i class="icon_praise_gray"></i>
+						<span class="praise_num" id="likeNum2">
+							8436
+						</span>
+					</span>
+					<a class="media_tool_meta tips_global meta_extra" href="http://img.host.77idc.cn/report.htm">投诉</a>
+				</div>
+				<div id="mcover" onclick="weChat()" style="display: none;">
+                    <img src="/assets/fx.jpg">
+	            </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- 
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"> -->

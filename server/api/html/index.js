@@ -14,11 +14,13 @@ var router = express.Router();
 router.get('/index', function(req, res, next){
   var filtpath = path.normalize(__dirname + '/../../..') + '/server/config/tmpl/index.tmpl';
   var data = fs.readFileSync(filtpath, 'utf-8');
-
+  var filtpath_content = path.normalize(__dirname + '/../../..') + '/server/config/tmpl/content.tmpl'
+  var datacontent = fs.readFileSync(filtpath_content, 'utf-8');
 
   res.render('view',{
             code: req.query.code,
-            tmpl: data,
+            tmpl_index: data,
+            tmpl: datacontent,
             tokens: 'no tokens'
           });
 
