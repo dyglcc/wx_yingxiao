@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css.css">
 <link rel="stylesheet" media="screen" href="/assets/published.css">
 <script src="/assets/jquery.js"></script>
-<!-- <script src="/assets/jquery.min.js"></script> -->
+<script src="/assets/jquery.min.js"></script>
 <script src="/assets/application.js"></script>
 <style id="mailListAppendCss" type="text/css">
   .mailListBox{border:1px solid #369; background:#fff; }
@@ -260,7 +260,7 @@ border-color: transparent;
 
 </style>
 
-<form class="center with-shadow" data-form-token="0R2dF2" accept-charset="UTF-8" method="post" action="/api/order/send?dorsy=submit&code=<%= code %>">
+<form id="content_form" class="center with-shadow" data-form-token="0R2dF2" accept-charset="UTF-8" method="post" action="/api/order/send?dorsy=submit&code=575480ddf2027def0e856842">
 
 	<div class="banner font-family-inherit">
     <div class="banner-text"> </div>
@@ -318,7 +318,7 @@ border-color: transparent;
     </div>
   </div>
   <input type="text" name="entry[field_3][street]" id="entry_field_3_street" placeholder="详细地址" class="street-input fixed-width-control gd-input-xxlarge">
-  
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 </div>
 </div>
 </div>
@@ -370,7 +370,7 @@ border-color: transparent;
     </div>
   </div>
 </form>
-<footer class="published"><a class="powered-by" style="opacity: 1;"><p><span>满天星银饰</span></p></a></footer></div><div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div><div id="lightbox" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container" style="touch-action: none; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="><div class="lb-nav"><a class="lb-prev" href=""></a><a class="lb-next" href=""></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div>
+<!-- <footer class="published"><a class="powered-by" style="opacity: 1;"><p><span>满天星银饰</span></p></a></footer> --></div><!-- <div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div> --><!-- <div id="lightbox" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container" style="touch-action: none; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="> --><!-- <div class="lb-nav"><a class="lb-prev" href=""></a><a class="lb-next" href=""></a></div> --><!-- <div class="lb-loader"><a class="lb-cancel"></a></div> --><!-- </div> --><!-- </div> --><!-- <div class="lb-dataContainer"><div class="lb-data"> --><!-- <div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div> --><!-- <div class="lb-closeContainer"><a class="lb-close"></a></div></div> --></div></div>
 
 
 				<div class="rich_media_tool" id="js_toobar2">

@@ -66,3 +66,7 @@ html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;line-height:1.6}bod
 				vertical-align: top;
 				border: 0;
 			 }
+
+            #content_form {
+            	display:block!important;
+            }

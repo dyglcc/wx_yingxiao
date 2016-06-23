@@ -21,7 +21,8 @@ router.get('/index', function(req, res, next){
             code: req.query.code,
             tmpl_index: data,
             tmpl: datacontent,
-            tokens: 'no tokens'
+            tokens: 'no tokens',
+            csrfToken: req.csrfToken()
           });
 
     // var appid = 'wx65f36a7c3c2eeda3';

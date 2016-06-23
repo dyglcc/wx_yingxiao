@@ -115,6 +115,7 @@ export function create(req, res) {
     street: req.body['entry[field_3][street]'],
     scode: req.query.code
   };
+  //console.log(req.body['entry[field_1]']);
 
   return Thing.create(order)
     .then(function(){
