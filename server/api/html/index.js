@@ -11,7 +11,7 @@ var querystring = require('querystring');
 
 var router = express.Router();
 
-router.get('/index', function(req, res, next){
+router.get('/show20160710', function(req, res, next){
   var filtpath = path.normalize(__dirname + '/../../..') + '/server/config/tmpl/index.tmpl';
   var data = fs.readFileSync(filtpath, 'utf-8');
 
